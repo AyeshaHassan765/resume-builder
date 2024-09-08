@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Resume</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="inner-nav"></div>
+<div id="container">
+    <div id="profile">
+        <div id="image">
+            <img id="profile-photo" src="default-profile.jpg" alt="Profile-Image">
+        </div>
+        <p id="name"></p>
+        <p id="designation">Web Developer</p>
+        <div id="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+    <div id="info-cards">
+        <div class="card">
+            <p><i class="fas fa-briefcase"></i>&nbsp;&nbsp;&nbsp;Work Experience</p>
+            <p id="work-experience"></p>
+        </div>
+        <div class="card">
+            <p><i class="fas fa-brain"></i>&nbsp;&nbsp;&nbsp;Skills</p>
+            <ul id="skills-list"></ul>
+        </div>
+        <div class="card">
+            <p><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;Education</p>
+            <p id="education"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Load user data from localStorage and populate the resume page
+window.onload = function() {
+    const name = localStorage.getItem("name");
+    const email = localStorage.getItem("email");
+    const number = localStorage.getItem("number");
+    const education = localStorage.getItem("education");
+    const workExperience = localStorage.getItem("workExperience");
+    const skills = JSON.parse(localStorage.getItem("skills"));
+
+    // Update the profile section
+    document.getElementById("name").innerHTML = `${name} <br><span id="email">${email}</span><br><strong>${number}</strong>`;
+
+    // Update work experience
+    document.getElementById("work-experience").innerText = workExperience;
+
+    // Update education
+    document.getElementById("education").innerText = education;
+
+    // Update skills
+    const skillsList = document.getElementById("skills-list");
+    skills.forEach(skill => {
+        const li = document.createElement("li");
+        li.innerText = skill;
+        skillsList.appendChild(li);
+    });
+}
+</script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

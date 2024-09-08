@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Personal Info</title>
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <h1 class="logo">Resume Builder</h1>
+        </div>
+    </nav>
+
+    <center>
+    <!-- Wrapper for form -->
+    <div class="wrapper">
+        <form id="personal-info-form" onsubmit="return validateForm(event)">
+            <h1>Personal Info</h1>
+            <div class="input-box">
+                <input type="text" id="name" placeholder="Name">
+            </div>
+            <div class="input-box">
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            <div class="input-box">
+                <input type="number" id="number" placeholder="Number">
+            </div>
+            <h1>Education</h1>
+            <div class="input-box">
+                <textarea id="education" placeholder="Enter your education details"></textarea>
+            </div>
+            <h1>Work Experience</h1>
+            <div class="input-box">
+                <textarea id="work-experience" placeholder="Enter your work experience"></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    </center>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Resume Builder. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation and storing the data to LocalStorage
+        function validateForm(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+            
+            // Get form fields
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const number = document.getElementById("number").value;
+            const education = document.getElementById("education").value;
+            const workExperience = document.getElementById("work-experience").value;
+
+            // Validate input
+            if (!name || !email || !number || !education || !workExperience) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Store form data in LocalStorage
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            localStorage.setItem("number", number);
+            localStorage.setItem("education", education);
+            localStorage.setItem("workExperience", workExperience);
+
+            // Redirect to resume.html
+            window.location.href = "resume.html";
+            return true;
+        }
+    </script>
+</body>
+</html>
